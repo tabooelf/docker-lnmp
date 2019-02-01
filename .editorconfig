@@ -1,0 +1,16 @@
+# 最顶层的配置文件
+root = true
+
+[*]
+# 设置文件编码
+charset = utf-8
+# 缩进类型是 tab  还是 space
+indent_style = space
+# 缩进数量
+indent_size = 4
+# 换行符格式
+end_of_line = lf
+# 在文件的最后插入一个空行
+insert_final_newline = true
+# 去除代码行末的任意空白字符
+trim_trailing_whitespace = true

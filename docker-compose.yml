@@ -1,0 +1,33 @@
+version: '3'
+services:
+
+    ################## NGINX Server Container ###################
+    nginx:
+        image: nginx:stable-alpine
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - ./nginx/sites/:/home/sites/:rw
+            - ./nginx/conf:/etc/nginx/conf.d/:rw
+            - ./nginx/nginx.conf:/etc/nginx/nginx.conf:rw
+            - ./nginx/log/:/var/log/nginx/:rw
+        restart: always
+        container_name: nginx
+
+    ########################### MySQL ###########################
+    mysql:
+        image: mysql:5.7.25
+        restart: always
+        ports:
+            - "3306:3306"
+        volumes:
+            - ./mysql/my.cnf:/etc/mysql/my.cnf
+            # - ./mysql/data:/var/lib/mysql:rw
+            # - ./mysql/log:/var/log/mysql:rw
+        environment:
+            - MYSQL_DATABASE=default
+            - MYSQL_USER=tabooelf
+            - MYSQL_PASSWORD=3266370
+            - MYSQL_ROOT_PASSWORD=root
+        container_name: mysql
